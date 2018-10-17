@@ -32,10 +32,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dc-Dx-48v">
                                 <rect key="frame" x="241.5" y="602" width="52" height="30"/>
                                 <state key="normal" title="Correct"/>
+                                <connections>
+                                    <action selector="selectCorrect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vk4-1a-0SW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUw-jt-ylJ">
                                 <rect key="frame" x="84.5" y="602" width="46" height="30"/>
                                 <state key="normal" title="Wrong"/>
+                                <connections>
+                                    <action selector="selectWrong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6oW-HH-MtT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
