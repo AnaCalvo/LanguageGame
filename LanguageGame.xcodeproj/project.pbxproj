@@ -12,6 +12,8 @@
 		833C713121773C500088A945 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 833C712F21773C500088A945 /* Main.storyboard */; };
 		833C713321773C510088A945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833C713221773C510088A945 /* Assets.xcassets */; };
 		833C713621773C510088A945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 833C713421773C510088A945 /* LaunchScreen.storyboard */; };
+		833F739E2178D0BD0077EA02 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 833F739C2178D0BD0077EA02 /* correct.mp3 */; };
+		833F739F2178D0BD0077EA02 /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 833F739D2178D0BD0077EA02 /* wrong.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		833C713221773C510088A945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		833C713521773C510088A945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		833C713721773C510088A945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		833F739C2178D0BD0077EA02 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
+		833F739D2178D0BD0077EA02 /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,7 @@
 		833C711F21773C500088A945 = {
 			isa = PBXGroup;
 			children = (
+				833F73992178CEEE0077EA02 /* Sounds */,
 				833C712A21773C500088A945 /* LanguageGame */,
 				833C712921773C500088A945 /* Products */,
 			);
@@ -62,6 +67,15 @@
 				833C713721773C510088A945 /* Info.plist */,
 			);
 			path = LanguageGame;
+			sourceTree = "<group>";
+		};
+		833F73992178CEEE0077EA02 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				833F739C2178D0BD0077EA02 /* correct.mp3 */,
+				833F739D2178D0BD0077EA02 /* wrong.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +136,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833F739F2178D0BD0077EA02 /* wrong.mp3 in Resources */,
 				833C713621773C510088A945 /* LaunchScreen.storyboard in Resources */,
 				833C713321773C510088A945 /* Assets.xcassets in Resources */,
 				833C713121773C500088A945 /* Main.storyboard in Resources */,
+				833F739E2178D0BD0077EA02 /* correct.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

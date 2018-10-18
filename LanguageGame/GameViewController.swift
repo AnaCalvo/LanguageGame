@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 struct Word: Decodable {
     var textEn: String
@@ -23,15 +24,21 @@ class GameViewController: UIViewController {
     @IBOutlet weak var languageOne: UILabel!
     @IBOutlet weak var languageTwo: UILabel!
     
+    var audioPlayer = AVAudioPlayer()
     var vocabularyEn: [String] = []
     var vocabularySpa: [String] = []
     var indexEn = 0
     var indexSpa = 0
+    var isCorrectTranslation = false
+    var isCorrectAnswer = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
     }
+    
+    // MARK: - Data fetching from JSON
     
     func fetchData()  {
         var arrayOfWords = [Word]()
@@ -64,40 +71,72 @@ class GameViewController: UIViewController {
         task.resume()
     }
     
-    func checkAnswer() {
+    // MARK: - Game checking and answer reaction
+    
+    func checkTranslation() {
         if indexEn == indexSpa {
-            print("IS CORRECT!!!")
+            isCorrectTranslation = true
         } else {
-            print("IS WRONG :(")
+            isCorrectTranslation = false
         }
     }
     
-    func showNextWord() {
+    func playCorrectSfx() {
+        let correctSfx = NSURL(fileURLWithPath: Bundle.main.path(forResource: "correct", ofType: "mp3")!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: correctSfx as URL)
+            audioPlayer.prepareToPlay()
+        } catch {
+            print("Problem in getting sound file")
+        }
+        audioPlayer.play()
+    }
+    
+    func playWrongSfx() {
+        let wrongSfx = NSURL(fileURLWithPath: Bundle.main.path(forResource: "wrong", ofType: "mp3")!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: wrongSfx as URL)
+            audioPlayer.prepareToPlay()
+        } catch {
+            print("Problem in getting sound file")
+        }
+        audioPlayer.play()
+    }
+    
+    func playSfx() {
+        isCorrectAnswer ? playCorrectSfx() : playWrongSfx()
+    }
+    
+    @objc func showNextWord() {
         if indexEn < vocabularyEn.count - 1 {
             let randomNumber = Int.random(in: 0 ... 500) // Avoids to create a pattern presenting the matching answers.
             indexEn += 1
-            
             if randomNumber % 3 == 0 {
                 indexSpa = Int(arc4random_uniform(UInt32(self.vocabularySpa.count)))
             } else {
                 indexSpa = indexEn
             }
-            
             languageOne.text = vocabularyEn[indexEn]
             languageTwo.text = vocabularySpa[indexSpa]
         } else {
             print("GAME OVER")
         }
     }
-   
+    
+    // MARK: - Buttons actions
+    
     @IBAction func selectCorrect(_ sender: UIButton) {
-        checkAnswer()
-        showNextWord()
+        checkTranslation()
+        isCorrectAnswer = isCorrectTranslation ? true : false
+        playSfx()
+        perform(#selector(showNextWord), with: nil, afterDelay: 0.5)
     }
     
     @IBAction func selectWrong(_ sender: UIButton) {
-        checkAnswer()
-        showNextWord()
+        checkTranslation()
+        isCorrectAnswer = isCorrectTranslation ? false : true
+        playSfx()
+        perform(#selector(showNextWord), with: nil, afterDelay: 0.5)
     }
     
 }
