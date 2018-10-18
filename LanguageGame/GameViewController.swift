@@ -59,10 +59,7 @@ class GameViewController: UIViewController {
                     self.vocabularySpa.append(i.textSpa)
                 }
                 DispatchQueue.main.async {
-                    self.indexSpa = Int(arc4random_uniform(UInt32(self.vocabularySpa.count)))
-                    self.indexEn = 0
-                    self.languageOne.text = self.vocabularyEn[self.indexEn]
-                    self.languageTwo.text = self.vocabularySpa[self.indexSpa]
+                    self.showNextWord()
                 }
             } catch let parsingError {
                 print("Error", parsingError)
@@ -108,6 +105,8 @@ class GameViewController: UIViewController {
     }
     
     @objc func showNextWord() {
+        animateTextSpa()
+        
         if indexEn < vocabularyEn.count - 1 {
             let randomNumber = Int.random(in: 0 ... 500) // Avoids to create a pattern presenting the matching answers.
             indexEn += 1
@@ -122,6 +121,16 @@ class GameViewController: UIViewController {
             print("GAME OVER")
         }
     }
+    
+    // MARK: - Text animation
+    
+    func animateTextSpa() {
+        languageTwo.center.y  -= view.bounds.height
+        UIView.animate(withDuration: 3, delay: 0.1, options: [.curveEaseIn], animations: {
+            self.languageTwo.center.y += self.view.bounds.height
+        })
+    }
+    
     
     // MARK: - Buttons actions
     
