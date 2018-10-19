@@ -21,17 +21,18 @@ struct Word: Decodable {
 
 class GameViewController: UIViewController {
     
-    @IBOutlet weak var languageOne: UILabel!
-    @IBOutlet weak var languageTwo: UILabel!
+    @IBOutlet weak var counterLabel: UILabel!
+    @IBOutlet weak var textEnLabel: UILabel!
+    @IBOutlet weak var textSpaLabel: UILabel!
     
     var audioPlayer = AVAudioPlayer()
     var vocabularyEn: [String] = []
     var vocabularySpa: [String] = []
+    var scoreCounter = 0
     var indexEn = 0
     var indexSpa = 0
     var isCorrectTranslation = false
     var isCorrectAnswer = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +88,7 @@ class GameViewController: UIViewController {
             print("Problem in getting sound file")
         }
         audioPlayer.play()
+        scoreCounter += 1
     }
     
     func playWrongSfx() {
@@ -115,8 +117,9 @@ class GameViewController: UIViewController {
             } else {
                 indexSpa = indexEn
             }
-            languageOne.text = vocabularyEn[indexEn]
-            languageTwo.text = vocabularySpa[indexSpa]
+            counterLabel.text = "You scored: \(self.scoreCounter) points"
+            textEnLabel.text = vocabularyEn[indexEn]
+            textSpaLabel.text = vocabularySpa[indexSpa]
         } else {
             print("GAME OVER")
         }
@@ -125,9 +128,12 @@ class GameViewController: UIViewController {
     // MARK: - Text animation
     
     func animateTextSpa() {
-        languageTwo.center.y  -= view.bounds.height
-        UIView.animate(withDuration: 3, delay: 0.1, options: [.curveEaseIn], animations: {
-            self.languageTwo.center.y += self.view.bounds.height
+        textSpaLabel.center.y -= view.bounds.height
+        UIView.animate(withDuration: 3,
+                       delay: 0.1,
+                       options: [.curveEaseIn],
+                       animations: {
+                        self.textSpaLabel.center.y += self.view.bounds.height
         })
     }
     
