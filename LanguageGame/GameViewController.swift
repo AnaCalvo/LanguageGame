@@ -24,6 +24,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var textEnLabel: UILabel!
     @IBOutlet weak var textSpaLabel: UILabel!
+    @IBOutlet weak var correctButton: UIButton!
+    @IBOutlet weak var wrongButton: UIButton!
+    @IBOutlet weak var playAgainButton: UIButton!
     
     var audioPlayer = AVAudioPlayer()
     var vocabularyEn: [String] = []
@@ -36,7 +39,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        startNewGame()
     }
     
     // MARK: - Data fetching from JSON
@@ -121,8 +124,38 @@ class GameViewController: UIViewController {
             textEnLabel.text = vocabularyEn[indexEn]
             textSpaLabel.text = vocabularySpa[indexSpa]
         } else {
-            print("GAME OVER")
+            showResult()
         }
+    }
+    
+    func showResult() {
+        if scoreCounter >= 200 {
+            counterLabel.text = "You scored \(scoreCounter) points.\nCongratulations 🎉 You nailed it!"
+        }
+        else if scoreCounter <= 100 {
+            counterLabel.text = "You scored \(scoreCounter) points.\nYou need to study more 🤓"
+        } else {
+            counterLabel.text = "You scored \(scoreCounter) points.\nThat was average...come on!\nyou can do it better! 💪"
+        }
+        textEnLabel.isHidden = true
+        textSpaLabel.isHidden = true
+        correctButton.isHidden = true
+        wrongButton.isHidden = true
+        playAgainButton.isHidden = false
+    }
+    
+    func startNewGame() {
+        scoreCounter = 0
+        indexEn = 0
+        indexSpa = 0
+        isCorrectTranslation = false
+        isCorrectAnswer = false
+        textEnLabel.isHidden = false
+        textSpaLabel.isHidden = false
+        correctButton.isHidden = false
+        wrongButton.isHidden = false
+        playAgainButton.isHidden = true
+        fetchData()
     }
     
     // MARK: - Text animation
@@ -136,7 +169,6 @@ class GameViewController: UIViewController {
                         self.textSpaLabel.center.y += self.view.bounds.height
         })
     }
-    
     
     // MARK: - Buttons actions
     
@@ -152,6 +184,10 @@ class GameViewController: UIViewController {
         isCorrectAnswer = isCorrectTranslation ? false : true
         playSfx()
         perform(#selector(showNextWord), with: nil, afterDelay: 0.5)
+    }
+    
+    @IBAction func playAgainAction(_ sender: Any) {
+        startNewGame()
     }
     
 }

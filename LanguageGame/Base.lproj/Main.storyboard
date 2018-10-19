@@ -49,6 +49,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSt-xu-XXX">
+                                <rect key="frame" x="152.5" y="328.5" width="70" height="30"/>
+                                <state key="normal" title="Play again"/>
+                                <connections>
+                                    <action selector="playAgainAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U44-NM-OyG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -62,20 +69,27 @@
                             <constraint firstItem="I5h-T2-cTj" firstAttribute="top" secondItem="BiG-Kw-wVC" secondAttribute="bottom" constant="30" id="XxC-c8-o1e"/>
                             <constraint firstItem="6dc-Dx-48v" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="80" id="ari-jH-i3a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6dc-Dx-48v" secondAttribute="bottom" constant="35" id="fZz-hK-5Pv"/>
+                            <constraint firstItem="NSt-xu-XXX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="mxD-og-lpe"/>
                             <constraint firstItem="BiG-Kw-wVC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nvd-NX-lLK"/>
                             <constraint firstItem="I5h-T2-cTj" firstAttribute="trailing" secondItem="BiG-Kw-wVC" secondAttribute="trailing" id="pzu-gY-sv3"/>
+                            <constraint firstItem="NSt-xu-XXX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="qCE-YY-QQE"/>
                             <constraint firstItem="I5h-T2-cTj" firstAttribute="leading" secondItem="BiG-Kw-wVC" secondAttribute="leading" id="uzE-BG-cmP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Jzp-U5-zIN"/>
                     <connections>
+                        <outlet property="correctButton" destination="6dc-Dx-48v" id="qnl-ZQ-wvf"/>
                         <outlet property="counterLabel" destination="BiG-Kw-wVC" id="EWo-dx-wy3"/>
+                        <outlet property="playAgainButton" destination="NSt-xu-XXX" id="ug7-go-wfd"/>
                         <outlet property="textEnLabel" destination="I5h-T2-cTj" id="Hgc-CD-U0w"/>
                         <outlet property="textSpaLabel" destination="qwR-gp-0Vd" id="emS-3h-DTB"/>
+                        <outlet property="wrongButton" destination="bUw-jt-ylJ" id="hmK-5d-EVH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2394" y="-672"/>
         </scene>
     </scenes>
 </document>
