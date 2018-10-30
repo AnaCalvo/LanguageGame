@@ -56,8 +56,10 @@ class GameViewController: UIViewController {
     func handleError(_ error: ServiceError) {
         switch error {
         case .parsingError, .noInternet, .urlError:
-            print("Error")
-        //TODO: Create an alert for error
+            let alert = UIAlertController(title: "Error", message: "Data not accessible.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
         case .custom(let e):
             print(e.localizedDescription)
         }
