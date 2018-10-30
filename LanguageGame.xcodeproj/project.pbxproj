@@ -14,6 +14,9 @@
 		833C713621773C510088A945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 833C713421773C510088A945 /* LaunchScreen.storyboard */; };
 		833F739E2178D0BD0077EA02 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 833F739C2178D0BD0077EA02 /* correct.mp3 */; };
 		833F739F2178D0BD0077EA02 /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 833F739D2178D0BD0077EA02 /* wrong.mp3 */; };
+		83B678D22188B52400FFE9B2 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B678D12188B52400FFE9B2 /* Networking.swift */; };
+		83B678D42188BCE100FFE9B2 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B678D32188BCE100FFE9B2 /* Word.swift */; };
+		83B678D62188BD3000FFE9B2 /* GameBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B678D52188BD3000FFE9B2 /* GameBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		833C713721773C510088A945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		833F739C2178D0BD0077EA02 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
 		833F739D2178D0BD0077EA02 /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
+		83B678D12188B52400FFE9B2 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		83B678D32188BCE100FFE9B2 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		83B678D52188BD3000FFE9B2 /* GameBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 			children = (
 				833C712B21773C500088A945 /* AppDelegate.swift */,
 				833C712D21773C500088A945 /* GameViewController.swift */,
+				83B678D32188BCE100FFE9B2 /* Word.swift */,
+				83B678D12188B52400FFE9B2 /* Networking.swift */,
+				83B678D52188BD3000FFE9B2 /* GameBrain.swift */,
 				833C712F21773C500088A945 /* Main.storyboard */,
 				833C713221773C510088A945 /* Assets.xcassets */,
 				833C713421773C510088A945 /* LaunchScreen.storyboard */,
@@ -151,6 +160,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B678D22188B52400FFE9B2 /* Networking.swift in Sources */,
+				83B678D62188BD3000FFE9B2 /* GameBrain.swift in Sources */,
+				83B678D42188BCE100FFE9B2 /* Word.swift in Sources */,
 				833C712E21773C500088A945 /* GameViewController.swift in Sources */,
 				833C712C21773C500088A945 /* AppDelegate.swift in Sources */,
 			);
@@ -236,6 +248,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -290,6 +303,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

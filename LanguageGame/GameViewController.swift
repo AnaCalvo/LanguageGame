@@ -9,16 +9,6 @@
 import UIKit
 import AVFoundation
 
-struct Word: Decodable {
-    var textEn: String
-    var textSpa: String
-    
-    enum CodingKeys: String, CodingKey {
-        case textEn = "text_eng"
-        case textSpa = "text_spa"
-    }
-}
-
 class GameViewController: UIViewController {
     
     @IBOutlet weak var counterLabel: UILabel!
@@ -36,6 +26,7 @@ class GameViewController: UIViewController {
     var indexSpa = 0
     var isCorrectTranslation = false
     var isCorrectAnswer = false
+    let service = Networking()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,32 +36,33 @@ class GameViewController: UIViewController {
     // MARK: - Data fetching from JSON
     
     func fetchData()  {
-        var arrayOfWords = [Word]()
-        
-        guard let url = URL(string: "https://gist.githubusercontent.com/DroidCoder/7ac6cdb4bf5e032f4c737aaafe659b33/raw/baa9fe0d586082d85db71f346e2b039c580c5804/words.json") else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return }
-            do {
-                let decoder = JSONDecoder()
-                arrayOfWords = try decoder.decode([Word].self, from: dataResponse)
-                
-                for i in arrayOfWords {
-                    self.vocabularyEn.append(i.textEn)
-                    self.vocabularySpa.append(i.textSpa)
+        service.fetchData { (words, error) in
+            guard let words = words else {
+                if let error = error {
+                    self.handleError(error)
                 }
-                DispatchQueue.main.async {
-                    self.showNextWord()
-                }
-            } catch let parsingError {
-                print("Error", parsingError)
+                return
+            }
+            for i in words {
+                self.vocabularyEn.append(i.textEn)
+                self.vocabularySpa.append(i.textSpa)
+            }
+            DispatchQueue.main.async {
+                self.showNextWord()
             }
         }
-        task.resume()
     }
+    
+    func handleError(_ error: ServiceError) {
+        switch error {
+        case .parsingError, .noInternet, .urlError:
+            print("Error")
+        //TODO: Create an alert for error
+        case .custom(let e):
+            print(e.localizedDescription)
+        }
+    }
+    
     
     // MARK: - Game checking and answer reaction
     
