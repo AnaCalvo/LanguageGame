@@ -18,7 +18,6 @@ class GameViewController: UIViewController {
     @IBOutlet weak var wrongButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     
-    var audioPlayer = AVAudioPlayer()
     var vocabularyEn: [String] = []
     var vocabularySpa: [String] = []
     var scoreCounter = 0
@@ -27,6 +26,7 @@ class GameViewController: UIViewController {
     var isCorrectTranslation = false
     var isCorrectAnswer = false
     let service = Networking()
+    let audio = Audio()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,33 +72,6 @@ class GameViewController: UIViewController {
         } else {
             isCorrectTranslation = false
         }
-    }
-    
-    func playCorrectSfx() {
-        let correctSfx = NSURL(fileURLWithPath: Bundle.main.path(forResource: "correct", ofType: "mp3")!)
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: correctSfx as URL)
-            audioPlayer.prepareToPlay()
-        } catch {
-            print("Problem in getting sound file")
-        }
-        audioPlayer.play()
-        scoreCounter += 1
-    }
-    
-    func playWrongSfx() {
-        let wrongSfx = NSURL(fileURLWithPath: Bundle.main.path(forResource: "wrong", ofType: "mp3")!)
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: wrongSfx as URL)
-            audioPlayer.prepareToPlay()
-        } catch {
-            print("Problem in getting sound file")
-        }
-        audioPlayer.play()
-    }
-    
-    func playSfx() {
-        isCorrectAnswer ? playCorrectSfx() : playWrongSfx()
     }
     
     @objc func showNextWord() {
@@ -167,14 +140,24 @@ class GameViewController: UIViewController {
     @IBAction func selectCorrect(_ sender: UIButton) {
         checkTranslation()
         isCorrectAnswer = isCorrectTranslation ? true : false
-        playSfx()
+        if isCorrectAnswer {
+            audio.playFileFromUrl(resource: "correct")
+            scoreCounter += 1
+        } else {
+            audio.playFileFromUrl(resource: "wrong")
+        }
         perform(#selector(showNextWord), with: nil, afterDelay: 0.5)
     }
     
     @IBAction func selectWrong(_ sender: UIButton) {
         checkTranslation()
         isCorrectAnswer = isCorrectTranslation ? false : true
-        playSfx()
+        if isCorrectAnswer {
+            audio.playFileFromUrl(resource: "correct")
+            scoreCounter += 1
+        } else {
+            audio.playFileFromUrl(resource: "wrong")
+        }
         perform(#selector(showNextWord), with: nil, afterDelay: 0.5)
     }
     

@@ -17,6 +17,7 @@
 		83B678D22188B52400FFE9B2 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B678D12188B52400FFE9B2 /* Networking.swift */; };
 		83B678D42188BCE100FFE9B2 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B678D32188BCE100FFE9B2 /* Word.swift */; };
 		83B678D62188BD3000FFE9B2 /* GameBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B678D52188BD3000FFE9B2 /* GameBrain.swift */; };
+		83B678D82188C37F00FFE9B2 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B678D72188C37F00FFE9B2 /* Audio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		83B678D12188B52400FFE9B2 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		83B678D32188BCE100FFE9B2 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		83B678D52188BD3000FFE9B2 /* GameBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBrain.swift; sourceTree = "<group>"; };
+		83B678D72188C37F00FFE9B2 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +68,11 @@
 			isa = PBXGroup;
 			children = (
 				833C712B21773C500088A945 /* AppDelegate.swift */,
-				833C712D21773C500088A945 /* GameViewController.swift */,
 				83B678D32188BCE100FFE9B2 /* Word.swift */,
 				83B678D12188B52400FFE9B2 /* Networking.swift */,
+				83B678D72188C37F00FFE9B2 /* Audio.swift */,
 				83B678D52188BD3000FFE9B2 /* GameBrain.swift */,
+				833C712D21773C500088A945 /* GameViewController.swift */,
 				833C712F21773C500088A945 /* Main.storyboard */,
 				833C713221773C510088A945 /* Assets.xcassets */,
 				833C713421773C510088A945 /* LaunchScreen.storyboard */,
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B678D82188C37F00FFE9B2 /* Audio.swift in Sources */,
 				83B678D22188B52400FFE9B2 /* Networking.swift in Sources */,
 				83B678D62188BD3000FFE9B2 /* GameBrain.swift in Sources */,
 				83B678D42188BCE100FFE9B2 /* Word.swift in Sources */,
